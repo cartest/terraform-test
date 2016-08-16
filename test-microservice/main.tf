@@ -1,5 +1,5 @@
 module "mservice_test-1" {
-  source                          = "../terraform-microservice"
+  source                          = "../../terraform-microservice"
   additional_security_group_ids   = ["${module.env_test-1.core_sg_id}"]
   asg_size_max                    = "3"
   asg_size_min                    = "3"

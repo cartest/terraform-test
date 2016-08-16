@@ -1,5 +1,5 @@
 module "env_test-1" {
-  source                          = "../terraform-environment"
+  source                          = "../../terraform-environment"
   environment                     = "${module.vpc_test-1.environment}"
   project                         = "${module.vpc_test-1.project}"
   aws_region                      = "${module.vpc_test-1.aws_region}"
@@ -10,7 +10,7 @@ module "env_test-1" {
 }
 
 module "env_test-2" {
-  source                          = "../terraform-environment"
+  source                          = "../../terraform-environment"
   environment                     = "${module.vpc_test-2.environment}"
   project                         = "${module.vpc_test-2.project}"
   aws_region                      = "${module.vpc_test-2.aws_region}"
