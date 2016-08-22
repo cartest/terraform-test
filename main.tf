@@ -29,7 +29,7 @@ module "vpc_test-2" {
 # Apply:
 # Crash with 3 errors:
 # * node doesn't support evaluation: *ast.Arithmetic{Op:4, Exprs:[]ast.Node{*ast.VariableAccess{Name:"count.index", Posx:ast.Pos{Column:27, Line:1}}, *ast.VariableAccess{Name:"var.region_az_count", Posx:ast.Pos{Column:40, Line:1}}}, Posx:ast.Pos{Column:27, Line:1}} in: ${var.peering_connections[count.index / var.region_az_count]}
-# Comment out: resource "aws_route" "private_nats_vpc_peers"
+# Comment out: resource "aws_route" "private_nats_vpc_peers" => Plan: 36 to add, 0 to change, 0 to destroy.
 # Apply complete! Resources: 0 added, 0 changed, 0 destroyed.
 
 # 3rd STEP ################################################################################################################
@@ -79,7 +79,13 @@ module "mservice_test-1" {
   }
 }
 
-# Plan: 13 to add, 0 to change, 0 to destroy.
+resource "aws_route_table_association" "test-1_private-nat" {
+  count          = "3"
+  subnet_id      = "${module.mservice_test-1.subnet_ids[count.index]}"
+  route_table_id = "${element(module.vpc_test-1.private_nat_route_table_ids, count.index)}" # should be passed from env
+}
+
+# Plan: 16 to add, 0 to change, 0 to destroy.
 # Apply:
 # Crash with 1 error:
 # aws_launch_configuration.launch_configuration: diffs didn't match during apply. This is a bug with Terraform and should be reported as a GitHub Issue.
