@@ -4,6 +4,6 @@
 *.plan
 *.tfplan
 .terraform
-
+**/terraform*
 .DS_Store
 .*.swp
