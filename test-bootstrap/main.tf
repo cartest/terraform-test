@@ -27,5 +27,5 @@ module "bootstrap_test" {
   environment        = "${var.environment}"
   project            = "${var.project}"
   vpc_cidr           = "${var.vpc_cidr}"
-  private_dns_domain = "$[var.private_dns_domain}"
+  private_dns_domain = "${var.private_dns_domain}"
 }
