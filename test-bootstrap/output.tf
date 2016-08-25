@@ -1,7 +1,3 @@
-output "aws_region" {
-  value = "${module.bootstrap_test.aws_region}"
-}
-
 output "availability_zones" {
   value = ["${module.bootstrap_test.availability_zones}"]
 }
