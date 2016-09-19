@@ -1,5 +1,5 @@
 module "bootstrap_test" {
-  source               = "../../terraform-bootstrap"
+  source               = "git::https://github.com/cartest/terraform-bootstrap"
   environment          = "TESTENV"
   project              = "TESTPROJ"
   vpc_cidr             = "10.222.0.0/16"
